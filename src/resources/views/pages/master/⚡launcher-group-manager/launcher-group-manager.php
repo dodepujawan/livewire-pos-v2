@@ -14,19 +14,24 @@ new class extends Component
 
     protected function rules(): array
     {
-        return [
-            'key' => ['required', 'string', 'max:50', 'unique:launcher_groups,key,' . $this->editingId],
+        $rules = [
             'label' => ['required', 'string', 'max:255'],
             'icon' => ['nullable', 'string', 'max:255'],
             'sortOrder' => ['required', 'integer', 'min:0'],
             'isActive' => ['boolean'],
         ];
+
+        if (! $this->editingId) {
+            $rules['key'] = ['required', 'string', 'max:50', 'unique:launcher_groups,key'];
+        }
+
+        return $rules;
     }
 
     public function render()
     {
         return $this->view([
-            'groups' => LauncherGroup::orderBy('sort_order')->get(),
+            'groups' => LauncherGroup::withCount('menus')->orderBy('sort_order')->get(),
         ])
         ->layout('layouts::app')
         ->title('Launcher Group Manager');
@@ -36,11 +41,19 @@ new class extends Component
     {
         $validated = $this->validate();
 
+        $data = [
+            'label'       => $validated['label'],
+            'icon'        => $validated['icon'],
+            'sort_order'  => $validated['sortOrder'],
+            'is_active'   => $validated['isActive'],
+        ];
+
         if ($this->editingId) {
-            LauncherGroup::findOrFail($this->editingId)->update($validated);
+            LauncherGroup::findOrFail($this->editingId)->update($data);
             session()->flash('success', 'Launcher group updated.');
         } else {
-            LauncherGroup::create($validated);
+            $data['key'] = $validated['key'];
+            LauncherGroup::create($data);
             session()->flash('success', 'Launcher group created.');
         }
 
@@ -59,6 +72,14 @@ new class extends Component
 
     public function delete(LauncherGroup $group): void
     {
+        if ($group->menus()->exists()) {
+            session()->flash(
+                'error',
+                'Group tidak dapat dihapus karena masih digunakan oleh menu.'
+            );
+            return;
+        }
+
         $group->delete();
         session()->flash('success', 'Launcher group deleted.');
     }

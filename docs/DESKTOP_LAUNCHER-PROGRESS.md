@@ -45,6 +45,9 @@
   - Tambah eager load `launcherGroup` di `menu-list.php`
   - Update blade untuk menampilkan label
 - **Sidebar child active state fix**: replaced `wire:current` with Alpine.js exact-path matching to prevent prefix-matching bug where `/system/roles` incorrectly highlighted `/system` parent
+- **Launcher Group Manager UX fix**: Key field now only shows in create mode, hidden in edit mode to prevent accidental key changes that could break menu relations
+  - Validation rules updated to only require key when creating, not when editing
+  - Delete protection added: groups with associated menus cannot be deleted
   - Added `x-data` with `currentPath` tracking
   - Child items use `x-bind:class` with exact `window.location.pathname` comparison
   - Parent items remain using `isActive()` and `hasActiveChild()`

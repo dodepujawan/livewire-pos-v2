@@ -82,7 +82,7 @@
                         label="Sort Order"
                         name="sort_order"
                         type="number"
-                        wire:model.live="sort_order"
+                        wire:model="sort_order"
                     />
 
                     {{-- Sidebar --}}

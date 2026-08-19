@@ -81,8 +81,9 @@
                     <x-form.input
                         label="Sort Order"
                         name="sort_order"
-                        type="number"
-                        wire:model.live="sort_order"
+                        type="text"
+                        inputmode="numeric"
+                        wire:model="sort_order"
                     />
 
                     {{-- Sidebar --}}

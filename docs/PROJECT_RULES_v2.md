@@ -56,6 +56,7 @@ Contoh:
 - `master.barang.delete`
 
 Jangan membuat nama route/permission sembarangan karena digunakan Permission Engine.
+lengakpanya bisa baca disisni path:docs/hak-akses-ai.md
 
 ## 5. Authorization
 - Jangan membuat sistem role/permission baru.
@@ -78,7 +79,7 @@ Jangan membuat nama route/permission sembarangan karena digunakan Permission Eng
 
 Input:
 - Search/barcode/autocomplete → `wire:model.live`
-- Qty/diskon/pembayaran → `wire:model.live.debounce.300ms`
+- Qty/diskon/pembayaran → `wire:model.live.debounce.500ms`
 - Input biasa → `wire:model.blur`
 - Readonly → jangan gunakan `wire:model`
 
