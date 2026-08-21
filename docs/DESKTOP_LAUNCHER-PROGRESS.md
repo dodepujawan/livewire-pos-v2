@@ -48,6 +48,13 @@
 - **Launcher Group Manager UX fix**: Key field now only shows in create mode, hidden in edit mode to prevent accidental key changes that could break menu relations
   - Validation rules updated to only require key when creating, not when editing
   - Delete protection added: groups with associated menus cannot be deleted
+- **Launcher visual redesign**:
+  - Removed 'Dashboard' and 'Launcher' headings for cleaner look
+  - Changed grid from 5 columns to 6 columns (lg:grid-cols-6) for more compact layout
+  - Smaller icons: h-9 w-9 with text-base instead of h-10 w-10 with text-lg
+  - Smaller text: text-[11px] instead of text-xs
+  - Tighter spacing: gap-3 instead of gap-4, space-y-8 between groups
+  - Uniform card design: p-3 padding, rounded-xl, consistent hover effects
   - Added `x-data` with `currentPath` tracking
   - Child items use `x-bind:class` with exact `window.location.pathname` comparison
   - Parent items remain using `isActive()` and `hasActiveChild()`

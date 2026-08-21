@@ -20,9 +20,9 @@
     $pageTitle = $labels[$segments[0] ?? ''] ?? ($segments ? ucfirst(str_replace('-', ' ', $segments[0])) : 'Dashboard');
 @endphp
 
-<div>
+<div class="p-4 md:p-6">
 
-    <nav class="relative overflow-visible border-b border-white/10 px-4 md:px-6 py-3 flex items-center justify-between flex-wrap gap-3
+    <nav class="relative overflow-visible rounded-xl border border-white/10 px-4 py-3 flex items-center justify-between flex-wrap gap-3
                 bg-gradient-to-r from-[#0f172a] via-[#1a2a6c] to-[#0f172a] shadow-lg shadow-black/20">
 
         {{-- subtle glow --}}
@@ -44,7 +44,7 @@
                 <div class="flex h-8 w-8 items-center justify-center rounded-lg
                             bg-gradient-to-br from-amber-400/20 to-transparent
                             border border-amber-400/30">
-                    <img src="{{ asset('gambar/pops_only.png') }}" alt="POPS" class="h-6 w-6 object-contain">
+                    <img src="{{ asset('gambar/pops_only.jpeg') }}" alt="POPS" class="h-6 w-6 object-contain">
                 </div>
                 <div class="leading-tight">
                     <div class="text-xs font-bold text-white tracking-wide">POPS</div>

@@ -26,7 +26,7 @@
                                 bg-gradient-to-br from-amber-400/20 to-transparent
                                 border border-amber-400/30 shadow-[0_0_16px_rgba(251,191,36,0.15)]">
                         <img
-                            src="{{ asset('gambar/pops_only.jpeg') }}"
+                            src="{{ asset('gambar/pops_only.png') }}"
                             alt="POPS Logo"
                             class="h-8 w-8 object-contain"
                         >

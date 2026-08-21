@@ -160,15 +160,15 @@
                             border border-amber-400/30 shadow-[0_0_25px_rgba(251,191,36,0.15)]
                             transition-transform duration-300 hover:scale-105">
                     <img
-                        src="{{ asset('gambar/pops_only.jpeg') }}"
+                        src="{{ asset('gambar/pops_only.png') }}"
                         alt="POPS Logo"
-                        class="h-16 w-16 object-contain rounded-xl"
+                        class="h-18 w-18 object-contain rounded-xl"
                     >
                 </div>
                 <h2 class="text-2xl font-bold tracking-tight text-white">
                     POPS <span class="text-xs font-extrabold uppercase tracking-widest text-amber-400 align-middle ml-0.5">Pro</span>
                 </h2>
-                <p class="text-sm font-medium text-slate-400 mt-1">Cashier &amp; Ledger System</p>
+                <p class="text-sm font-medium text-slate-400 mt-1">Cashier &amp; Ledger</p>
             </div>
 
             @if(session('error'))
