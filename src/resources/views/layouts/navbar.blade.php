@@ -55,18 +55,11 @@
             <div class="hidden md:block h-6 w-px bg-white/10 shrink-0"></div>
 
             {{-- Breadcrumb / page title --}}
-            <div class="hidden md:flex items-center gap-1.5 text-xs text-slate-400 min-w-0">
+            <div id="breadcrumb-wrap" class="hidden md:flex items-center gap-1.5 text-xs text-slate-400 min-w-0">
                 <a href="{{ route('dashboard') }}" wire:navigate class="hover:text-amber-300 transition shrink-0">
                     <i class="ti ti-home"></i>
                 </a>
-                @foreach($segments as $segment)
-                    <span class="text-slate-600 shrink-0">/</span>
-                    @if($loop->last)
-                        <span class="text-amber-300 font-medium truncate">{{ $labels[$segment] ?? ucfirst(str_replace('-', ' ', $segment)) }}</span>
-                    @else
-                        <span class="truncate">{{ $labels[$segment] ?? ucfirst(str_replace('-', ' ', $segment)) }}</span>
-                    @endif
-                @endforeach
+                <span id="breadcrumb-items" class="flex items-center gap-1.5"></span>
             </div>
 
             {{-- Mobile: page title only --}}
@@ -134,3 +127,35 @@
         </div>
     </nav>
 </div>
+<script>
+    const LABELS = {
+        master: 'Master', transaksi: 'Transaksi', auth: 'Auth', system: 'System',
+        barang: 'Barang', menu: 'Menu', penjualan: 'Penjualan', register: 'User',
+        role: 'Role', list: 'Daftar', create: 'Tambah', edit: 'Edit',
+        show: 'Detail', dashboard: 'Dashboard',
+    };
+
+    function renderBreadcrumb() {
+        const routeName = document.querySelector('meta[name="route-name"]')?.content ?? '';
+        const segments = routeName ? routeName.split('.') : [];
+        const wrap = document.getElementById('breadcrumb-items');
+        if (!wrap) return;
+
+        wrap.innerHTML = segments.map((seg, i) => {
+            const label = LABELS[seg] ?? (seg.charAt(0).toUpperCase() + seg.slice(1).replace('-', ' '));
+            const isLast = i === segments.length - 1;
+            return `<span class="text-slate-600 shrink-0">/</span>
+                    <span class="${isLast ? 'text-amber-300 font-medium' : ''} truncate">${label}</span>`;
+        }).join('');
+
+        // mobile title juga ikut update kalau perlu
+        const mobileTitle = document.getElementById('mobile-page-title');
+        if (mobileTitle && segments.length) {
+            const last = segments[segments.length - 1];
+            mobileTitle.textContent = LABELS[last] ?? last;
+        }
+    }
+
+    document.addEventListener('livewire:navigated', renderBreadcrumb);
+    document.addEventListener('DOMContentLoaded', renderBreadcrumb);
+</script>
