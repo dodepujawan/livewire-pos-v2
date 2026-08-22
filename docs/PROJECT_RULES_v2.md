@@ -205,3 +205,6 @@ jika konteks component sudah jelas dan tidak menimbulkan ambiguitas.
 catatn tambahan ketita pelru mengedit dan membuat file baru wajib tanya programmer untuk aproval tapi kalo delete file itu big no, harus di hapus manual dan akmu buat notifikasi besar wajib hapus file ini pathnya biar prgrammer yang hapus
 
 apbila butuh artisan jalankan docker compose exec app bash -> cd src -> artisan 
+
+#untuk lebih hemat token baca juga ini
+.kiloignore

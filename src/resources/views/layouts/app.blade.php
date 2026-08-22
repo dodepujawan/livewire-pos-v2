@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta name="route-name" content="{{ request()->route()?->getName() }}">
-    <title>POS SPA</title>
-
+    <title>POPS Point Of Purchase System</title>
+    <link rel="icon" href="{{ asset('gambar/pops_only.png') }}" type="image/png">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     @livewireStyles
