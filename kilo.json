@@ -6,5 +6,6 @@
       "resources/**": "ask",
       "*": "ask"
     }
-  }
+  },
+  "snapshot": false
 }
